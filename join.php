@@ -54,7 +54,9 @@ if (isset($_POST['send'])) {
 		var_dump($auth->error);*/
 	} else {
 		/*If User Registered OK*/
-		echo '<h2>Registered Successull</h2> Please, <a href="index.php">authorize</a>.';
+		echo '<h2>Registered Successull</h2>';
+		echo '<h3>Activation code have been send to your e-mail.<h3>';
+		echo '<h3>Please, confirm your e-mail and <a href="index.php">login</a>.</h3>';
 	}
 }
 

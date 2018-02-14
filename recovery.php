@@ -39,16 +39,20 @@ $auth = new userAuth($sqlconn);
 if (isset($_POST['send'])) {
 
 	/*User Password Recovery Function*/
-	if ($auth->passwordRecovery($_POST['email']) == false) {
+	$recovery = $auth->passwordRecovery($_POST['email']);
+
+	/*Check For Recovery*/
+	if ($recovery == false) {
 
 		/*If Email Did Not Find*/
 		/*echo "<pre>";
 		var_dump($auth->error);*/
+		echo $_SESSION['error'];
 		return false;
 
 	} else {
 		/*If Email Found Successfully*/
-		echo 'A new password has been sent to your e-mail address.';
+		echo 'New password has been sent to your email address.';
 	}
 
 }

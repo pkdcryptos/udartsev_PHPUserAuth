@@ -10,11 +10,6 @@
 </head>
 <body>
 
-<hr>
-<p>email: demo@demo.com</p>
-<p>password: pass</p>
-<hr>
-
 <p><a href="index.php">Login</a>
 <a href="join.php">Register</a>
 <a href="recovery.php">Forgot password?</a></p>
@@ -25,7 +20,7 @@
 		<h1>Login</h1>
 		<form action="" method="post">
 	  		<p>email <input type="text" name="email" value="demo@demo.com"/></p>
-	    	<p>password <input type="password" name="password" value="pass"/></p>
+	    	<p>password <input type="password" name="password" value="123"/></p>
 	    	<p><input type="submit" value="send" name="send"/></p>
 		</form>
 	</td>
@@ -58,6 +53,16 @@ if (isset($_POST['send'])) {
 /*User Exit*/
 if (isset($_GET['exit'])) {
 	$auth->userExit();
+}
+
+/*User Activation Code Check*/
+if (isset($_GET['activation'])) {
+	$activation = $auth->activation($_GET['activation']);
+	if ($activation === true) {
+		echo "<h4>Email " . $_SESSION['email'] . " activated! You can login.</h4>";
+	} else {
+		echo $_SESSION['error'];
+	}
 }
 
 /*User Authorization Check*/
